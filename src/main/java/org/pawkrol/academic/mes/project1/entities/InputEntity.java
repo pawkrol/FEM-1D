@@ -11,8 +11,8 @@ import java.util.Map;
  */
 public class InputEntity {
 
-    private int ne = 1;
-    private int nh = 1;
+    private int ne;
+    private int nh;
     private double alpha;
     private double envT;
     private double q;
@@ -30,48 +30,24 @@ public class InputEntity {
         return ne;
     }
 
-    public void setNe(int ne) {
-        this.ne = ne;
-    }
-
     public int getNh() {
         return nh;
-    }
-
-    public void setNh(int nh) {
-        this.nh = nh;
     }
 
     public double getAlpha() {
         return alpha;
     }
 
-    public void setAlpha(double alpha) {
-        this.alpha = alpha;
-    }
-
     public double getEnvT() {
         return envT;
-    }
-
-    public void setEnvT(double envT) {
-        this.envT = envT;
     }
 
     public double getQ() {
         return q;
     }
 
-    public void setQ(double q) {
-        this.q = q;
-    }
-
     public List<Element> getElements() {
         return elements;
-    }
-
-    public void setElements(List<Element> elements) {
-        this.elements = elements;
     }
 
     private void setAttributesFromFile(String file) throws IOException{
@@ -90,8 +66,6 @@ public class InputEntity {
                     break;
 
                 case "n":
-                    ne++;
-
                     Node n = new Node();
 
                     int index = Integer.parseInt(tokens[1]);
@@ -110,8 +84,6 @@ public class InputEntity {
                     break;
 
                 case "e":
-                    nh++;
-
                     Element e = new Element();
                     int nodeIdx;
 
@@ -151,5 +123,8 @@ public class InputEntity {
                     break;
             }
         }
+
+        nh = nodesMap.size();
+        ne = elements.size();
     }
 }

@@ -104,10 +104,13 @@ public class Mesh {
         }
     }
 
-    private void displayVectorVertical(RealVector v){
+    private void displayVectorVertical(String name, RealVector v){
         int length = v.getDimension();
 
         for (int i = 0; i < length; i++){
+            if (i == (length/2)) System.out.print("{" + name + "} =\t");
+            else System.out.print("\t\t");
+
             System.out.printf("| %10.3f |\n", v.getEntry(i));
         }
     }
@@ -146,12 +149,6 @@ public class Mesh {
 
             if (i == (hRows/2)) System.out.print("*");
 
-//            int idx;
-//            if (i < ne){
-//                idx = elements.get(i).getN1().getIndex();
-//            } else {
-//                idx = elements.get(ne - 1).getN2().getIndex();
-//            }
             System.out.printf("\t| t%d |\t", i + 1);
 
             if (i == (hRows/2)) System.out.print("+");
